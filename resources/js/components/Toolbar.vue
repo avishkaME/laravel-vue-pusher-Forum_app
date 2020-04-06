@@ -4,19 +4,24 @@
       <v-row class="child-flex">
         <div>
           <v-toolbar dark>
-            <!-- <v-btn icon class="hidden-xs-only">
-              <v-icon>mdi-arrow-left</v-icon>
-            </v-btn> -->
 
             <v-toolbar-title>Forumify</v-toolbar-title>
 
             <v-spacer></v-spacer>
-            <v-toolbar-items class="hidden-sm-and-down">
-                <v-btn flat>Forum</v-btn>
-                <v-btn flat>Ask Question</v-btn>
-                <v-btn flat>Category</v-btn>
-                <v-btn flat>Login</v-btn>
-            </v-toolbar-items>
+            <div class="hidden-sm-and-down">
+                <router-link to="/forum">
+                    <v-btn>Forum</v-btn>
+                </router-link>
+                <router-link to="/question">
+                    <v-btn>Ask Question</v-btn>
+                </router-link>
+                <router-link to="/category">
+                    <v-btn>Category</v-btn>
+                </router-link>
+                <router-link to="/login">
+                    <v-btn>Login</v-btn>
+                </router-link> 
+            </div>
           </v-toolbar>
         </div>
 
