@@ -4,7 +4,10 @@ import AppStorage from "./AppStorage";
 class User{
     login(data){
         axios.post('/api/auth/login', data)
-            .then(res => this.responseAfterLogin(res))
+            .then(res => {
+                user.responseAfterLogin(res)
+                this.$router.push({name:'forum'})
+            })
             .catch(err => console.log(err.response.data))
     }
 
