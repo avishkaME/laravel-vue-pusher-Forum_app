@@ -48,7 +48,13 @@ export default {
     methods: {
         login(){
             User.login(this.form)
-            this.$router.push({name:'forum'})
+            // axios.post('/api/auth/login',this.form)
+            // .then(res => {
+            //     User.login(this.form)
+            //     this.$router.push({name:'forum'})
+            // })
+            // .catch(error => console.log(error, 'error'))
+            
         }
     }
 }
