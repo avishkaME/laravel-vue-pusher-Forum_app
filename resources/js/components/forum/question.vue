@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto"
+    class="mx-auto mt-2"
     outlined
   >
     <v-list-item three-line>
