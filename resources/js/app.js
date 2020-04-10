@@ -10,6 +10,7 @@ window.Vue = require('vue');
 
 import Vue from 'vue';
 import Vuetify from "../plugins/vuetify";
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 
 Vue.use(Vuetify);
