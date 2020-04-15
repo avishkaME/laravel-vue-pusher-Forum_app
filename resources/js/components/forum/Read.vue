@@ -9,7 +9,10 @@
             :data= question>
         </show-question>
         <replies :question="question"></replies>
-        <add-reply :questionSlug="question.slug"></add-reply>
+        <add-reply v-if="loggedIn" :questionSlug="question.slug"></add-reply>
+        <div class="mt-4" v-else>
+            <router-link to="/login">Login to reply</router-link>
+        </div>
     </div>
 </template>
 
@@ -30,6 +33,11 @@ export default {
     created(){
         this.listen()
         this.getQuestion()
+    },
+    computed: {
+        loggedIn() {
+            return User.loggedIn()
+        }
     },
     methods: {
         listen() {
