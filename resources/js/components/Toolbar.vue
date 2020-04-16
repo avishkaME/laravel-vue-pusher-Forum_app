@@ -5,7 +5,9 @@
         <div>
           <v-toolbar dark>
 
-            <v-toolbar-title>Forumify</v-toolbar-title>
+            <v-toolbar-title>
+              <router-link to="/" class="white--text">Forumify</router-link>
+            </v-toolbar-title>
 
             <v-spacer></v-spacer>
             <app-notification v-if="loggedIn"></app-notification>

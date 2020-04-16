@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+import Home from '../components/Home'
 import Login from '../components/login/Login'
 import signup from '../components/login/signup'
 import Forum from '../components/forum/Forum'
@@ -12,6 +13,7 @@ import Create from '../components/forum/Create'
 import CreateCategory from '../components/category/CreateCategory'
 
 const routes = [
+    { path: '/', component: Home },
     { path: '/login', component: Login },
     { path: '/logout', component: Logout },
     { path: '/signup', component: signup },

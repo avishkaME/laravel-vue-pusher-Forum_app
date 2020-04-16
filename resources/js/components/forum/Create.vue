@@ -1,9 +1,11 @@
 <template>
   <v-container>
     <v-form @submit.prevent="create">
+      <span class="red--text" v-if="errors.title">{{errors.title[0]}}</span>
       <v-text-field v-model="form.title" label="Title" type="text" required></v-text-field>
 
         <!-- <markdown-editor v-model="form.body"></markdown-editor> -->
+      <span class="red--text" v-if="errors.category_id">{{errors.category_id[0]}}</span>
       <v-select
         v-model="form.category_id"
         :items="categories"
@@ -12,10 +14,10 @@
         label="Category"
         autocomplete
       ></v-select>
-      
-        <vue-simplemde v-model="form.body" ref="markdownEditor" />
+      <span class="red--text" v-if="errors.body">{{errors.body[0]}}</span>
+      <vue-simplemde v-model="form.body" ref="markdownEditor" />
 
-      <v-btn color="success" type="submit" class="mr-4">Ask</v-btn>
+      <v-btn color="success" type="submit" class="mr-4" :disabled="disabled">Ask</v-btn>
     </v-form>
   </v-container>
 </template>
@@ -41,9 +43,14 @@ export default {
     create() {
         axios.post('/api/question',this.form)
         .then(res => this.$router.push(res.data.path))
-        .catch(error => this.errors = error.response.data.error)
+        .catch(error => this.errors = error.response.data.errors)
     }
-  }
+  },
+  computed: {
+    disabled() {
+       return !(this.form.title && this.form.body && this.form.category_id)
+    }
+  },
 };
 </script>
  
