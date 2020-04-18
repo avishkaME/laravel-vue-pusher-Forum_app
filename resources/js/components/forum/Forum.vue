@@ -8,6 +8,15 @@
                  :data=question>
 
                  </question>
+
+                <div class="text-center">
+                    <v-pagination
+                    v-model="meta.current_page"
+                    :length="3"
+                    circle
+                    @input="changePage"
+                    ></v-pagination>
+                </div>
             </v-flex>
             <v-flex xs4>
                 <app-sidebar></app-sidebar>
@@ -23,14 +32,28 @@ import AppSidebar from './AppSidebar'
 export default {
     data(){
         return{
-            questions: {}
+            questions: {},
+            meta: {},
         }
     },
     components: {question,AppSidebar},
     created(){
         axios.get('api/question')
-        .then(res => this.questions = res.data.data)
+        .then(res => {
+            this.questions = res.data.data
+            this.meta = res.data.meta
+        })
         .catch(error => console.log(error.response.data))
-    }
+    },
+    methods: {
+        changePage(page) {
+            axios.get(`api/question/?page=${page}`)
+            .then(res => {
+                this.questions = res.data.data
+                this.meta = res.data.meta
+            })
+            .catch(error => console.log(error.response.data))
+            }
+    },
 }
 </script>
